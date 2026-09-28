@@ -9,7 +9,7 @@
   --color-ink: #211d25;
   --color-muted: #6f6875;
   --color-line: #e3dce8;
-  --color-accent: #a34f68;
+  --color-accent: #8254a8;
 }
 
 :root[data-theme="dark"] {
