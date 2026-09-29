@@ -1,6 +1,6 @@
-import Container from '../Container'
-import Reveal from '../Reveal'
-import { services } from '../../data/site'
+import Container from "../Container";
+import Reveal from "../Reveal";
+import { services } from "../../data/site";
 
 export default function Services() {
   return (
@@ -20,12 +20,14 @@ export default function Services() {
                 <h3 className="text-2xl font-bold tracking-tight transition-colors group-hover:text-accent md:text-3xl">
                   {s.title}
                 </h3>
-                <p className="text-muted">{s.text}</p>
+                <p className="col-start-2 text-muted md:col-start-auto">
+                  {s.text}
+                </p>
               </div>
             </Reveal>
           ))}
         </div>
       </Container>
     </section>
-  )
+  );
 }

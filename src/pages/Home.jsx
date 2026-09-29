@@ -44,7 +44,7 @@ function Hero() {
 
           <motion.h1
             variants={item}
-            className="mt-7 text-5xl font-black leading-[0.98] md:text-7xl"
+            className="mt-7 text-[2.75rem] font-black leading-[0.98] sm:text-5xl md:text-7xl"
           >
             Bold ideas.
             <br />
