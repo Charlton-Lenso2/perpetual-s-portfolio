@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import Container from "../components/Container";
+import DownloadCVButton from "../components/DownloadCVButton";
 import Stats from "../components/home/Stats";
 import Services from "../components/home/Services";
 import FeaturedProjects from "../components/home/FeaturedProjects";
@@ -75,6 +76,7 @@ function Hero() {
             >
               Get in touch
             </Link>
+            <DownloadCVButton />
           </motion.div>
         </div>
       </motion.div>

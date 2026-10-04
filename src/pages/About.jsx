@@ -1,5 +1,6 @@
 import Container from "../components/Container";
 import Reveal from "../components/Reveal";
+import DownloadCVButton from "../components/DownloadCVButton";
 import Timeline from "../components/about/Timeline";
 import CTA from "../components/home/CTA";
 
@@ -40,6 +41,9 @@ export default function About() {
               helping founders and brands turn strategy into measurable growth,
               and I bring that same rigor to every project I take on.
             </p>
+            <div className="mt-8">
+              <DownloadCVButton />
+            </div>
           </Reveal>
 
           <Reveal delay={0.15}>

@@ -1,3 +1,5 @@
+export const cvUrl = '/perpetual-rojasi-cv.pdf'
+
 export const stats = [
   { value: '150+', label: 'Campaigns launched' },
   { value: '4.2x', label: 'Average ROAS' },

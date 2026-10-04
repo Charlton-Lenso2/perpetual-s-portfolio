@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Mail, ArrowUpRight } from "lucide-react";
 import Container from "../components/Container";
 import Reveal from "../components/Reveal";
+import DownloadCVButton from "../components/DownloadCVButton";
 import SocialLinks from "../components/SocialLinks";
 
 export default function Contact() {
@@ -86,6 +87,7 @@ export default function Contact() {
                 <Mail size={20} className="shrink-0" />
                 <span className="break-all">hello@perpetual.com</span>
               </a>
+              <DownloadCVButton className="w-fit" />
               <SocialLinks className="justify-start gap-x-5" />
             </div>
           </Reveal>
