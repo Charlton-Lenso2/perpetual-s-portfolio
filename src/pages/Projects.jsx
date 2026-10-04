@@ -16,7 +16,7 @@ export default function Projects() {
     active === 'All' ? projects : projects.filter((p) => p.category === active)
 
   return (
-    <Container className="pt-24 pb-20 md:pt-16 md:pb-28">
+    <Container className="pt-12 pb-20 md:pt-16 md:pb-28">
       <Reveal>
         <span className="inline-block rounded-full border border-line px-4 py-1.5 font-mono text-xs text-accent">
           Work

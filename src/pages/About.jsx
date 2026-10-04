@@ -24,7 +24,7 @@ const certificates = [
 export default function About() {
   return (
     <>
-      <Container className="pt-24 pb-4 md:pt-16">
+      <Container className="pt-12 pb-4 md:pt-16">
         <div className="grid items-center gap-8 md:grid-cols-2 md:gap-12">
           <Reveal>
             <span className="inline-block rounded-full border border-line px-4 py-1.5 font-mono text-xs text-accent">

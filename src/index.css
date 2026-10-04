@@ -2,23 +2,24 @@
 
 @theme {
   --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
   --font-mono: "Space Mono", ui-monospace, monospace;
 
-  --color-canvas: #f4f1f7;
-  --color-paper: #fffefd;
-  --color-ink: #211d25;
-  --color-muted: #6f6875;
-  --color-line: #e3dce8;
-  --color-accent: #8254a8;
+  --color-canvas: #eef2f7;
+  --color-paper: #ffffff;
+  --color-ink: #0f2440;
+  --color-muted: #5b6b86;
+  --color-line: #d9e2ef;
+  --color-accent: #1e3a8a;
 }
 
 :root[data-theme="dark"] {
-  --color-canvas: #111012;
-  --color-paper: #1b191d;
-  --color-ink: #f6f2f7;
-  --color-muted: #a49ba8;
-  --color-line: #39333d;
-  --color-accent: #d4ff4f;
+  --color-canvas: #080f1f;
+  --color-paper: #0f1b33;
+  --color-ink: #eef3fb;
+  --color-muted: #9aa9c4;
+  --color-line: #223354;
+  --color-accent: #7ea2ff;
 }
 
 body {

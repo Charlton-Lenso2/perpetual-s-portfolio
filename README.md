@@ -8,7 +8,7 @@ A personal portfolio for digital marketer Perpetual Rojasi. The site presents se
 - About page with a profile, career timeline, and certificate gallery
 - Work page for campaign case studies
 - Contact page with project inquiry details
-- Responsive sidebar navigation with a compact mobile menu
+- Responsive top navbar with a mobile dropdown menu
 - Light and dark themes, with the selected theme remembered in the browser
 - Page transitions and smooth scrolling
 

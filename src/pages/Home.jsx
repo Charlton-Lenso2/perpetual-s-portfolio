@@ -19,7 +19,7 @@ const item = {
 
 function Hero() {
   return (
-    <Container className="pt-24 pb-16 md:pt-16">
+    <Container className="pt-12 pb-16 md:pt-16">
       <motion.div
         variants={container}
         initial="hidden"
