@@ -29,8 +29,8 @@ function Hero() {
       >
         <motion.div variants={item} className="overflow-hidden rounded-2xl">
           <img
-            src="https://picsum.photos/seed/perpetual-client/1000/1200"
-            alt="A portrait representing a client campaign"
+            src="/src/assets/IMG-20240612-WA0050.jpg.jpeg"
+            alt="Perpetual Rojasi"
             className="aspect-[4/5] w-full object-cover"
           />
         </motion.div>
@@ -115,8 +115,8 @@ function HomeAbout() {
         </div>
         <div className="overflow-hidden rounded-2xl">
           <img
-            src="https://picsum.photos/seed/perpetual-about-home/1000/760"
-            alt="Creative workspace representing Perpetual's approach to marketing"
+            src="/src/assets/image.jpeg"
+            alt="Perpetual Rojasi - creative workspace"
             className="aspect-[5/4] w-full object-cover"
           />
         </div>

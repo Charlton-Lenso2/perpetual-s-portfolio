@@ -81,11 +81,27 @@ export default function Contact() {
           <Reveal delay={0.1}>
             <div className="space-y-6">
               <a
-                href="mailto:hello@perpetual.com"
+                href={`mailto:${contact.email}`}
                 className="flex min-w-0 items-center gap-3 text-base transition-colors hover:text-accent sm:text-lg"
               >
                 <Mail size={20} className="shrink-0" />
-                <span className="break-all">hello@perpetual.com</span>
+                <span className="break-all">{contact.email}</span>
+              </a>
+              <a
+                href={`tel:${contact.phoneHref}`}
+                className="flex min-w-0 items-center gap-3 text-base transition-colors hover:text-accent sm:text-lg"
+              >
+                <FaWhatsapp size={20} className="shrink-0" />
+                <span className="break-all">{contact.phone} · {contact.whatsapp}</span>
+              </a>
+              <a
+                href={contact.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="flex min-w-0 items-center gap-3 text-base transition-colors hover:text-accent sm:text-lg"
+              >
+                <FaLinkedinIn size={20} className="shrink-0" />
+                <span className="break-all">{contact.linkedin}</span>
               </a>
               <DownloadCVButton className="w-fit" />
               <SocialLinks className="justify-start gap-x-5" />

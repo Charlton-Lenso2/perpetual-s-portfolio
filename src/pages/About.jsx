@@ -7,18 +7,18 @@ import CTA from "../components/home/CTA";
 const certificates = [
   {
     title: "Digital Marketing Foundations",
-    issuer: "Certificate issuer",
-    image: "https://picsum.photos/seed/certificate-foundations/900/620",
+    issuer: "Perpetual Rojasi",
+    image: "/src/assets/certificate-placeholder.jpg",
   },
   {
-    title: "Social Media Strategy",
-    issuer: "Certificate issuer",
-    image: "https://picsum.photos/seed/certificate-social/900/620",
+    title: "Social Media Strategy Certification",
+    issuer: "Perpetual Rojasi",
+    image: "/src/assets/certificate-placeholder.jpg",
   },
   {
     title: "Analytics & Measurement",
-    issuer: "Certificate issuer",
-    image: "https://picsum.photos/seed/certificate-analytics/900/620",
+    issuer: "Perpetual Rojasi",
+    image: "/src/assets/certificate-placeholder.jpg",
   },
 ];
 
@@ -49,7 +49,7 @@ export default function About() {
           <Reveal delay={0.15}>
             <div className="overflow-hidden rounded-2xl">
               <img
-                src="https://picsum.photos/seed/perpetual-about/1000/1100"
+                src="/src/assets/IMG-20240612-WA0050.jpg.jpeg"
                 alt="Perpetual Rojasi"
                 className="aspect-[4/5] w-full object-cover"
               />

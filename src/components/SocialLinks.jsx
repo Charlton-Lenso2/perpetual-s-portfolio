@@ -1,17 +1,5 @@
-import {
-  FaInstagram,
-  FaLinkedinIn,
-  FaTiktok,
-  FaWhatsapp,
-} from "react-icons/fa6";
-
-const socials = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/", Icon: FaLinkedinIn },
-  { label: "Instagram", href: "https://www.instagram.com/", Icon: FaInstagram },
-  { label: "TikTok", href: "https://www.tiktok.com/", Icon: FaTiktok },
-  { label: "WhatsApp", href: "https://wa.me/", Icon: FaWhatsapp },
-];
-
+import { FaLinkedinIn, FaWhatsapp } from "react-icons/fa6";
+import { socials } from "../../data/site";
 export default function SocialLinks({ className = "" }) {
   return (
     <nav

@@ -1,67 +1,101 @@
-import { useMemo, useState } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
-import Container from '../components/Container'
-import Reveal from '../components/Reveal'
-import ProjectCard from '../components/ProjectCard'
-import { projects } from '../data/site'
+import { useState } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router";
+import Container from "../components/Container";
+import Reveal from "../components/Reveal";
+import ProjectCard from "../components/ProjectCard";
+import { projects } from "../data/site";
+
+const filters = [
+  "All work",
+  ...new Set(projects.map((project) => project.category)),
+];
 
 export default function Projects() {
-  const categories = useMemo(
-    () => ['All', ...new Set(projects.map((p) => p.category))],
-    []
-  )
-  const [active, setActive] = useState('All')
-
-  const filtered =
-    active === 'All' ? projects : projects.filter((p) => p.category === active)
+  const [activeFilter, setActiveFilter] = useState("All work");
+  const visibleProjects =
+    activeFilter === "All work"
+      ? projects
+      : projects.filter((project) => project.category === activeFilter);
 
   return (
-    <Container className="pt-12 pb-20 md:pt-16 md:pb-28">
-      <Reveal>
-        <span className="inline-block rounded-full border border-line px-4 py-1.5 font-mono text-xs text-accent">
-          Work
-        </span>
-        <h1 className="mt-6 max-w-2xl text-4xl font-black leading-[1.05] tracking-[-0.03em] md:text-6xl">
-          Campaigns that moved the <span className="text-accent">needle.</span>
-        </h1>
-      </Reveal>
+    <div className="pb-20 pt-28 sm:pt-32">
+      <Container>
+        <Reveal>
+          <section className="border-b border-line pb-10 md:pb-14">
+            <p className="text-xs font-medium uppercase tracking-[0.12em] text-accent">
+              The portfolio
+            </p>
+            <div className="mt-4 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+              <div>
+                <h1 className="max-w-3xl text-5xl font-semibold leading-[1.04] sm:text-6xl">
+                  Ideas made to{" "}
+                  <span className="font-serif font-normal italic text-accent">
+                    connect.
+                  </span>
+                </h1>
+                <p className="mt-5 max-w-xl leading-relaxed text-muted">
+                  A collection of campaign concepts and digital marketing work
+                  across social, paid media, and content.
+                </p>
+              </div>
+              <p className="shrink-0 text-sm text-muted">
+                {String(visibleProjects.length).padStart(2, "0")} projects
+              </p>
+            </div>
+          </section>
+        </Reveal>
 
-      <Reveal delay={0.1}>
-        <div className="mt-10 flex flex-wrap gap-2">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActive(cat)}
-              className={`rounded-full border px-4 py-2 text-sm transition-colors ${
-                active === cat
-                  ? 'border-accent bg-accent text-canvas'
-                  : 'border-line text-muted hover:border-accent hover:text-accent'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </Reveal>
+        <section className="pt-8 md:pt-10" aria-label="Project gallery">
+          <div
+            className="mb-7 flex flex-wrap gap-2"
+            role="group"
+            aria-label="Filter projects"
+          >
+            {filters.map((filter) => (
+              <button
+                key={filter}
+                type="button"
+                aria-pressed={activeFilter === filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`rounded-full border px-4 py-2 text-sm transition-colors ${
+                  activeFilter === filter
+                    ? "border-ink bg-ink text-paper"
+                    : "border-line bg-paper text-muted hover:border-ink hover:text-ink"
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={active}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
-          transition={{ duration: 0.35 }}
-          className="mt-12 grid gap-x-4 gap-y-10 md:grid-cols-2"
-        >
-          {filtered.map((p) => (
-            <ProjectCard key={p.id} project={p} />
-          ))}
-        </motion.div>
-      </AnimatePresence>
+          <div className="grid items-stretch gap-4 sm:grid-cols-2 lg:gap-5">
+            {visibleProjects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+              />
+            ))}
+          </div>
+        </section>
 
-      {filtered.length === 0 && (
-        <p className="mt-12 text-muted">No projects in this category yet.</p>
-      )}
-    </Container>
-  )
+        <Reveal className="mt-16 flex flex-col items-start justify-between gap-5 border-t border-line pt-10 sm:flex-row sm:items-center">
+          <div>
+            <p className="text-xs font-medium uppercase tracking-[0.12em] text-accent">
+              Have something in mind?
+            </p>
+            <h2 className="mt-2 text-2xl font-semibold">
+              Let’s talk about your project.
+            </h2>
+          </div>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm text-paper transition-colors hover:bg-accent"
+          >
+            Get in touch <ArrowUpRight size={16} />
+          </Link>
+        </Reveal>
+      </Container>
+    </div>
+  );
 }
