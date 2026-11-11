@@ -4,22 +4,22 @@
   --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
 
-  --color-canvas: #f4f1ec;
-  --color-paper: #fbfaf8;
-  --color-ink: #1a1817;
-  --color-muted: #7a746d;
-  --color-line: #e4dfd8;
-  --color-accent: #c8745a;
+  --color-canvas: #f2f5f9;
+  --color-paper: #fbfcfe;
+  --color-ink: #14243a;
+  --color-muted: #627186;
+  --color-line: #dce4ee;
+  --color-accent: #315d8a;
 }
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  --color-canvas: #171715;
-  --color-paper: #22211f;
-  --color-ink: #f5f1eb;
-  --color-muted: #b5ada3;
-  --color-line: #3c3934;
-  --color-accent: #e69a7c;
+  --color-canvas: #0e1724;
+  --color-paper: #162438;
+  --color-ink: #edf3fa;
+  --color-muted: #a9bad0;
+  --color-line: #2b3c53;
+  --color-accent: #8ab1dc;
 }
 
 body {
