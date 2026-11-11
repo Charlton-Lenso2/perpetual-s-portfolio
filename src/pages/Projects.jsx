@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Film } from "lucide-react";
 import { Link } from "react-router";
 import Container from "../components/Container";
 import Reveal from "../components/Reveal";
-import ProjectCard from "../components/ProjectCard";
+import ProjectLightbox from "../components/ProjectLightbox";
 import { projects } from "../data/site";
 
 const filters = [
@@ -11,8 +11,67 @@ const filters = [
   ...new Set(projects.map((project) => project.category)),
 ];
 
+function ProjectCard({ project, index, onOpen }) {
+  return (
+    <Reveal delay={index * 0.06}>
+      <article
+        onClick={() => onOpen(project)}
+        className="group h-full cursor-pointer overflow-hidden rounded-2xl border border-line bg-paper transition-shadow duration-300 hover:shadow-[0_18px_50px_rgba(0,0,0,0.07)]"
+      >
+        <div className="relative aspect-16/10 overflow-hidden bg-canvas">
+          <img
+            src={project.image}
+            alt={`${project.title} cover`}
+            loading="lazy"
+            className={`h-full w-full transition-transform duration-700 ease-out group-hover:scale-[1.03] ${
+              project.imageFit === "contain"
+                ? "bg-white object-contain"
+                : "object-cover"
+            }`}
+          />
+          <span className="absolute left-4 top-4 rounded-full border border-white/40 bg-paper/90 px-3 py-1.5 text-xs font-medium backdrop-blur-sm">
+            {project.category}
+          </span>
+          {project.video && (
+            <span className="absolute right-4 top-4 flex items-center gap-1.5 rounded-full bg-ink/80 px-3 py-1.5 text-xs font-medium text-paper backdrop-blur-sm">
+              <Film size={13} /> Video
+            </span>
+          )}
+        </div>
+
+        <div className="flex h-full flex-col p-5 sm:p-6">
+          <p className="text-xs font-medium uppercase tracking-[0.1em] text-muted">
+            {project.client} · {project.year}
+          </p>
+          <h2 className="mt-3 text-xl font-semibold leading-snug sm:text-2xl">
+            {project.title}
+          </h2>
+          {project.description && (
+            <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-muted">
+              {project.description}
+            </p>
+          )}
+          <div className="mt-5 flex items-end justify-between gap-4 border-t border-line pt-4">
+            <div>
+              <p className="text-xs text-muted">Highlight</p>
+              <p className="mt-1 text-sm font-medium">{project.result}</p>
+            </div>
+            <span
+              aria-hidden="true"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line transition-colors group-hover:bg-ink group-hover:text-paper"
+            >
+              <ArrowUpRight size={17} />
+            </span>
+          </div>
+        </div>
+      </article>
+    </Reveal>
+  );
+}
+
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("All work");
+  const [activeProject, setActiveProject] = useState(null);
   const visibleProjects =
     activeFilter === "All work"
       ? projects
@@ -23,9 +82,6 @@ export default function Projects() {
       <Container>
         <Reveal>
           <section className="border-b border-line pb-10 md:pb-14">
-            <p className="text-xs font-medium uppercase tracking-[0.12em] text-accent">
-              The portfolio
-            </p>
             <div className="mt-4 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
               <div>
                 <h1 className="max-w-3xl text-5xl font-semibold leading-[1.04] sm:text-6xl">
@@ -74,6 +130,8 @@ export default function Projects() {
               <ProjectCard
                 key={project.id}
                 project={project}
+                index={projects.indexOf(project)}
+                onOpen={setActiveProject}
               />
             ))}
           </div>
@@ -96,6 +154,11 @@ export default function Projects() {
           </Link>
         </Reveal>
       </Container>
+
+      <ProjectLightbox
+        project={activeProject}
+        onClose={() => setActiveProject(null)}
+      />
     </div>
   );
 }

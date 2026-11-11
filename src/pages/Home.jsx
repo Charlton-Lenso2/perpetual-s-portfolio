@@ -1,126 +1,108 @@
 import { Link } from "react-router";
+import { linkedin } from "../data/site";
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+
 import Container from "../components/Container";
 import DownloadCVButton from "../components/DownloadCVButton";
-import Stats from "../components/home/Stats";
+import AboutIntro from "../components/home/AboutIntro";
 import Services from "../components/home/Services";
 import FeaturedProjects from "../components/home/FeaturedProjects";
+import SkillsTools from "../components/home/SkillsTools";
 import CTA from "../components/home/CTA";
+import perpetualPortrait from "../assets/IMG-20240612-WA0050.jpg.jpeg";
 
 const ease = [0.22, 1, 0.36, 1];
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.12 } },
 };
 const item = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.8, ease } },
 };
 
 function Hero() {
   return (
-    <Container className="pt-12 pb-16 md:pt-16">
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="grid items-center gap-8 md:grid-cols-[0.9fr_1.1fr] md:gap-14"
-      >
-        <motion.div variants={item} className="overflow-hidden rounded-2xl">
-          <img
-            src="/src/assets/IMG-20240612-WA0050.jpg.jpeg"
-            alt="Perpetual Rojasi"
-            className="aspect-[4/5] w-full object-cover"
-          />
-        </motion.div>
-
-        <div className="py-2 md:py-8">
+    <Container className="pt-28 md:pt-32">
+      <div className="grid items-center gap-10 rounded-4xl border border-line bg-paper p-5 shadow-[0_20px_60px_rgba(0,0,0,0.04)] sm:p-8 md:grid-cols-[1.1fr_0.9fr] md:gap-12 md:rounded-[2.5rem] md:p-12">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="py-4 md:py-8"
+        >
           <motion.span
             variants={item}
-            className="inline-block rounded-full border border-line px-4 py-1.5 font-mono text-xs text-accent"
+            className="inline-flex rounded-full border border-line bg-canvas px-4 py-1.5 text-xs font-medium"
           >
             Digital Marketer
           </motion.span>
 
           <motion.h1
             variants={item}
-            className="mt-7 text-[2.75rem] font-black leading-[0.98] sm:text-5xl md:text-7xl"
+            className="mt-7 max-w-2xl text-5xl font-semibold leading-[1.02] tracking-[-0.04em] sm:text-6xl"
           >
-            Bold ideas.
-            <br />
-            Measurable
-            <br />
-            <span className="text-accent">growth.</span>
+            Curious about what makes people{" "}
+            <span className="font-serif font-normal italic text-accent">
+              click.
+            </span>
           </motion.h1>
 
           <motion.p
             variants={item}
-            className="mt-6 max-w-xl text-lg leading-relaxed text-muted"
+            className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
           >
-            Perpetual Rojasi brings thoughtful strategy and creative execution
-            together to help brands reach the right people and turn attention
-            into action.
+            I&apos;m Perpetual, a digital marketer based in Harare, building
+            campaigns across social media, content, branding and digital
+            advertising.
           </motion.p>
 
           <motion.div variants={item} className="mt-8 flex flex-wrap gap-3">
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm text-paper transition-colors hover:bg-accent"
             >
-              View work <ArrowUpRight size={16} />
+              View projects <ArrowUpRight size={16} />
             </Link>
+            <DownloadCVButton variant="outline" className="px-6 py-3" />
             <Link
               to="/contact"
-              className="rounded-full border border-line px-6 py-3 text-sm transition-colors hover:border-accent hover:text-accent"
+              className="rounded-full border border-line bg-paper px-6 py-3 text-sm transition-colors hover:border-ink"
             >
               Get in touch
             </Link>
-            <DownloadCVButton />
+            <a
+              href={linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-6 py-3 text-sm font-medium transition-colors hover:border-ink hover:text-ink"
+            >
+              LinkedIn
+            </a>
           </motion.div>
-        </div>
-      </motion.div>
-    </Container>
-  );
-}
+        </motion.div>
 
-function HomeAbout() {
-  return (
-    <Container className="pb-20 md:pb-28">
-      <div className="grid items-center gap-8 border-t border-line pt-12 md:grid-cols-[1.1fr_0.9fr] md:gap-16 md:pt-16">
-        <div>
-          <span className="font-mono text-xs uppercase text-accent">
-            A little about me
-          </span>
-          <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight md:text-5xl">
-            Curious by nature. Focused on what moves people.
-          </h2>
-          <p className="mt-6 max-w-2xl leading-relaxed text-muted">
-            I’m Perpetual, an early-career digital marketer who enjoys finding
-            the human story behind every brand. I bring curiosity, care, and a
-            test-and-learn mindset to the work, from shaping clear messages to
-            building content and campaigns that meet people where they are. I’m
-            especially interested in the details that make good marketing feel
-            personal: understanding an audience, choosing the right channel, and
-            learning from the results. Every project is a chance to ask better
-            questions, make something useful, and help a business grow with
-            intention.
-          </p>
-          <Link
-            to="/about"
-            className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
-          >
-            More about me <ArrowUpRight size={15} />
-          </Link>
-        </div>
-        <div className="overflow-hidden rounded-2xl">
-          <img
-            src="/src/assets/image.jpeg"
-            alt="Perpetual Rojasi - creative workspace"
-            className="aspect-[5/4] w-full object-cover"
-          />
-        </div>
+        {/* The owner's portrait, as the hero visual. */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.25, ease }}
+          className="relative mx-auto w-full max-w-md"
+        >
+          <div className="relative aspect-4/5 w-full overflow-hidden rounded-3xl md:rounded-4xl bg-canvas">
+            <img
+              src={perpetualPortrait}
+              alt="Perpetual, digital marketer"
+              className="h-full w-full object-cover"
+            />
+            <span className="absolute bottom-4 left-4 rounded-full border border-white/40 bg-paper/90 px-4 py-2 text-xs font-medium text-ink backdrop-blur-sm md:bottom-6 md:left-6">
+              Perpetual Rojasi
+            </span>
+          </div>
+        </motion.div>
       </div>
+
     </Container>
   );
 }
@@ -129,8 +111,8 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <HomeAbout />
-      <Stats />
+      <AboutIntro />
+      <SkillsTools />
       <Services />
       <FeaturedProjects />
       <CTA />

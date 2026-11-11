@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Download, Menu, Moon, Sun, X } from "lucide-react";
+import { cvUrl } from "../data/site";
 
 const links = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
-  { to: "/projects", label: "Projects" },
+  { to: "/projects", label: "Works" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -16,15 +17,11 @@ export default function Navbar({ theme, onToggleTheme }) {
   return (
     <header className="fixed inset-x-0 top-4 z-50 px-4">
       <div className="mx-auto flex max-w-5xl items-center justify-between rounded-full border border-line bg-paper/80 px-5 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.04)] backdrop-blur-xl">
-        <Link
-          to="/"
-          onClick={() => setOpen(false)}
-          className="font-serif text-2xl italic tracking-tight"
-        >
+        <Link to="/" className="font-serif text-2xl italic tracking-tight">
           Perpetual<span className="text-accent">.</span>
         </Link>
 
-        <nav aria-label="Main navigation" className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-1 md:flex">
           {links.map((l) => (
             <NavLink
               key={l.to}
@@ -52,6 +49,14 @@ export default function Navbar({ theme, onToggleTheme }) {
             {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
           </button>
 
+          <a
+            href={cvUrl}
+            download="Perpetual-Rojasi-CV.pdf"
+            className="hidden items-center gap-2 rounded-full border border-line bg-paper px-5 py-2 text-sm transition-colors hover:border-ink md:inline-flex"
+          >
+            <Download size={15} /> CV
+          </a>
+
           <Link
             to="/contact"
             className="hidden rounded-full bg-ink px-5 py-2 text-sm text-paper transition-colors hover:bg-accent md:inline-block"
@@ -63,7 +68,7 @@ export default function Navbar({ theme, onToggleTheme }) {
             type="button"
             className="flex h-10 w-10 items-center justify-center rounded-full text-ink md:hidden"
             onClick={() => setOpen((o) => !o)}
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label="Toggle menu"
             aria-expanded={open}
           >
             {open ? <X size={22} /> : <Menu size={22} />}
@@ -78,7 +83,6 @@ export default function Navbar({ theme, onToggleTheme }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
-            aria-label="Mobile navigation"
             className="mx-auto mt-2 flex max-w-5xl flex-col rounded-3xl border border-line bg-paper p-3 md:hidden"
           >
             {links.map((l) => (
@@ -96,6 +100,14 @@ export default function Navbar({ theme, onToggleTheme }) {
                 {l.label}
               </NavLink>
             ))}
+            <a
+              href={cvUrl}
+              download="Perpetual-Rojasi-CV.pdf"
+              onClick={() => setOpen(false)}
+              className="inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-base text-ink"
+            >
+              <Download size={17} /> Download CV
+            </a>
           </motion.nav>
         )}
       </AnimatePresence>
